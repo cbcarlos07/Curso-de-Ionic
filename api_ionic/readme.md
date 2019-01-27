@@ -36,4 +36,5 @@
 ### Caso dê o seguinte problema `No application encryption key has been specified.`, rode o seguinte comando e reinicie o projeto com o `php artisan serve`:
       php artisan key:generate
 
-
+### Caso dê problema de cors siga esse link
+      https://github.com/barryvdh/laravel-cors
