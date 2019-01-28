@@ -20,7 +20,6 @@ class CreateBeersTable extends Migration
             $table->integer('type')->unsigned();
             $table->string('mark',191);
             $table->timestamps();
-            $table->foreign('type')->references('id')->on('tipos');
         });
     }
 
