@@ -8,18 +8,22 @@ import 'rxjs/add/operator/map';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private url: string = 'beer.symfonycasts.com.br'
+  private url: string = 'http://localhost:8000'
+  public beers: Array<{}>;
   constructor(public navCtrl: NavController, private http: Http) {
     this.http.get(this.url + '/beers')
              .map( res => res.json() )
              .subscribe( data => {
-                console.log(data)
+                this.beers = data;
              })
   }
 
-  goToTestPage(){
-    /* Mudança de tela ou pagina */
-    this.navCtrl.push(TestPage)
+  getBeerInfo( id ){  
+     /*Mudança de tela ou pagina */
+    this.navCtrl.push(TestPage, {
+       'beer_id' : id,
+       'api_url' : this.url
+    })
   }
 
 }

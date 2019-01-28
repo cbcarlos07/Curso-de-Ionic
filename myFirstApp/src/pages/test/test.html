@@ -7,24 +7,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>test</ion-title>
+    <ion-title>Cerveja</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-      <ion-item>
-         <ion-label floating>Username</ion-label>
-         <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-         <ion-label floating>Password</ion-label> 
-         <ion-input type="password"></ion-input>
-      </ion-item>
-      
-         <button ion-button full (click)="showAlert()">Logar</button>
-      
-  </ion-list>  
+
+    <ion-card *ngIf="beer">
+        <img src="https://www.skol.com.br/assets/images/produtos/pilsen-garrafa-300.png" width="5" height="125" >
+        <ion-card-content >
+           <ion-card-title>
+              {{ beer.name }}
+           </ion-card-title>
+           <p>
+              Empresa: <strong>{{ beer.mark }}</strong> - Preço: <strong>{{ beer.price }}</strong>
+           </p>
+        </ion-card-content> 
+    </ion-card>
 </ion-content>

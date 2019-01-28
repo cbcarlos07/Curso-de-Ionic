@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/beers', ['as' => 'beers', 'uses' => 'BeersController@all']);
+Route::get('/beers/{id}', ['as' => 'beersById', 'uses' => 'BeersController@beersById']);
