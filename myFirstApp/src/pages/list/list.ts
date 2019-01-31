@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  public url: string = 'http://localhost:8000'
+  //public url: string = 'http://localhost:8000'
+  public url: string = 'http://192.168.137.1:8000'
   beer = {name:  "",
          price: "", 
          type:  "",

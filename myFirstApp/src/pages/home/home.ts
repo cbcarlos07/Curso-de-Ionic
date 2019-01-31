@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private url: string = 'http://localhost:8000'
+  //private url: string = 'http://localhost:8000'
+  public url: string = 'http://192.168.137.1:8000'
   public beers: Array<{}>;
   constructor(public navCtrl: NavController, private http: Http) {
     this.http.get(this.url + '/beers')
