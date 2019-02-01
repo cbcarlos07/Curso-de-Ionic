@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
   //private url: string = 'http://localhost:8000'
-  public url: string = 'http://192.168.137.1:8000'
+  public url: string = 'http://192.168.137.1:81/api_ionic'
   public beers: Array<{}>;
   constructor(public navCtrl: NavController, private http: Http) {
     this.http.get(this.url + '/beers')
