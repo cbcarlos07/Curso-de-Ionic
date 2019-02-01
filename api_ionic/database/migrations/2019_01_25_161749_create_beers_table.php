@@ -19,6 +19,7 @@ class CreateBeersTable extends Migration
             $table->double('price');
             $table->integer('type')->unsigned();
             $table->string('mark',191);
+            $table->longText('img');
             $table->timestamps();
         });
     }
