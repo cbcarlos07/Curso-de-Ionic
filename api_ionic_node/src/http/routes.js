@@ -15,9 +15,9 @@ const routes = (server) => {
         next()
     })
     server.post('/v1/beers', async (req, res, next) => {       
-        const { name, price, type, mark, img  } = req.body
+        
         try{
-            res.send( await db.beers().all() )
+            res.send( await db.beers().save( req.body ) )
         }catch(error){
             res.send(error)
         }
