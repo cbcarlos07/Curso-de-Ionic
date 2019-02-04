@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Beers;
+
 class BeersController extends Controller
 {
     public function all()
@@ -40,5 +41,23 @@ class BeersController extends Controller
             $status = 400;                
         }
         return response()->json( $retorno,  $status);
+    }
+
+    public function mostrarFoto( $nomeImg )
+    {
+            /*echo $nomeImg;
+            exit; */
+            $path = storage_path('app/public/img/' . $nomeImg );
+            
+            if (!\File::exists($path)) {
+                abort(404);
+            }
+        
+            $file = \File::get($path);
+            $type = \File::mimeType($path);
+        
+            $response = \Response::make($file, 200);
+            $response->header("Content-Type", $type);
+            return $response;
     }
 }

@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/beers', ['as' => 'beers', 'uses' => 'BeersController@all']);
 Route::get('/beers/{id}', ['as' => 'beersById', 'uses' => 'BeersController@beersById']);
 Route::post('/beers', ['as' => 'salvar', 'uses' => 'BeersController@salvar']);
+Route::get('/img/{nomeImg}', ['as' => 'img', 'uses' => 'BeersController@mostrarFoto']);

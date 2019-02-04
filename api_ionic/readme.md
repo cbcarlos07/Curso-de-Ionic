@@ -38,3 +38,7 @@
 
 ### Caso dê problema de cors siga esse link
       https://github.com/barryvdh/laravel-cors
+
+### Image
+      php composer.phar require intervention/image
+      composer require intervention/image
