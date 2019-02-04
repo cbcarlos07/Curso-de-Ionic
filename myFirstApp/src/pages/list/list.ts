@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
+import { Camera, CameraOptions } from '@ionic-native/camera'
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -10,13 +10,13 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  //public url: string = 'http://localhost:8000'
+  //public url: string = 'http://localhost:81/api_ionic'
   public url: string = 'http://192.168.137.1:81/api_ionic'
-  beer = {name:  "",
-         price: "", 
-         type:  "",
-         mark:  "",
-         img: ""
+  beer = { name:  "",
+           price: "", 
+           type:  "",
+           mark:  "",
+           img:   ""
         };
 
   constructor(public navCtrl: NavController, 
@@ -27,6 +27,8 @@ export class ListPage {
     
   }
   saveBeer(beer){
+  
+ 
      let headers = new Headers()
          headers.append('Content-Type', 'application/json')
      let options = new RequestOptions({headers: headers})    
@@ -38,14 +40,20 @@ export class ListPage {
                       duration: 3000
                   });
                   toast.present()
-              } )
+              }, (err) => {
+                let toast = this.toastCtrl.create({
+                    message: err.msg + ' log: '+ err.log,
+                    duration: 3000
+                });
+                toast.present()
+              })
     
   }
 
   getFoto(){
     const options: CameraOptions = {
         quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
+        destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE
       }

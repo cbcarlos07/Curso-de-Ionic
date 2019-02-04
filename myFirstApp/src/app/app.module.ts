@@ -9,7 +9,7 @@ import { TestPage } from '../pages/test/test';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
-import { Camera } from '@ionic-native/camera/ngx';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [

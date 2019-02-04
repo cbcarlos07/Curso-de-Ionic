@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { TestPage } from '../test/test';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -8,14 +8,20 @@ import 'rxjs/add/operator/map';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  //private url: string = 'http://localhost:8000'
+  //private url: string = 'http://localhost:81/api_ionic'
   public url: string = 'http://192.168.137.1:81/api_ionic'
   public beers: Array<{}>;
-  constructor(public navCtrl: NavController, private http: Http) {
+  constructor(public navCtrl: NavController, private http: Http, private toastCtrl: ToastController) {
     this.http.get(this.url + '/beers')
              .map( res => res.json() )
              .subscribe( data => {
                 this.beers = data;
+             }, err => {
+                let toastCtrl = this.toastCtrl.create({
+                  message: err.log,
+                  duration: 3000
+                })
+                toastCtrl.present()
              })
   }
 
