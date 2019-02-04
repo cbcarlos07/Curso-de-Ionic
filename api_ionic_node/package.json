@@ -1,0 +1,19 @@
+{
+  "name": "api_ionic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mysql": "^2.16.0",
+    "restify": "^7.7.0",
+    "restify-cors-middleware": "^1.1.1"
+  },
+  "dependencies": {},
+  "description": ""
+}
