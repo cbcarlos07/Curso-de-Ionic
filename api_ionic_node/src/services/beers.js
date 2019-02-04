@@ -10,6 +10,7 @@ const beers = deps => {
                         return false
                     }
                     resolve( { results } )
+                    
                 })
             })
         },
@@ -19,14 +20,15 @@ const beers = deps => {
                 const query = 'INSERT INTO beers (name, price, type, mark, img, created_at, updated_at)'+
                               '            VALUES(?,?,?,?,?, NOW(),NOW())'
                 const data = [beer.name, beer.price, beer.type, beer.mark, beer.img]              
-                console.log(beer)              
+                           
                 
                 connection.query(query, data, (error, results) => {
                     if(error){
-                        errorHandler(error, 'Falha ao listar as categorias', reject)
+                        errorHandler(error, 'Falha ao cadastrar', reject)
                         return false
                     }
-                    resolve( { results } )
+                    resolve( { results, msg: 'Salvo com sucesso!' } )
+                    
                 })
             })
         },
