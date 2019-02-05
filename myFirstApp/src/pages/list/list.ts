@@ -53,7 +53,7 @@ export class ListPage {
 
   getFoto(){
     const options: CameraOptions = {
-        quality: 100,
+        quality: 60, // qualidade aceita na api
         destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE

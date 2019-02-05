@@ -14,6 +14,16 @@ const routes = (server) => {
         }
         next()
     })
+    server.get('/v1/beers/:id', async (req, res, next) => {
+        const { id } = req.params
+        
+        try{
+            res.send( await db.beers().getBeer( id ) )
+        }catch(error){
+            res.send(error)
+        }
+        next()
+    })
     server.post('/v1/beers', async (req, res, next) => {       
         
         try{

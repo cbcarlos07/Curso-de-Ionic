@@ -32,6 +32,21 @@ const beers = deps => {
                 })
             })
         },
+        getBeer: ( id ) => {
+            return new Promise((resolve, reject) => {
+                const { connection, errorHandler } = deps
+                const query = 'SELECT * FROM beers WHERE id = ?'
+                const data = [ id ]                
+                connection.query(query, data, (error, results) => {
+                    if(error){
+                        errorHandler(error, 'Falha ao encontrar registro', reject)
+                        return false
+                    }
+                    resolve( results )
+                    
+                })
+            })
+        },
         /*update: (id, name) => {},
         del   : ( id ) */
     }

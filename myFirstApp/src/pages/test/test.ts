@@ -25,7 +25,7 @@ export class TestPage {
     this.http.get(url + '/beers/'+id)
       .map( res => res.json() )
       .subscribe( data => {
-        this.beer = data;
+        this.beer = data[0];
     })
    
     
