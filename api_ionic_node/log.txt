@@ -1,0 +1,1 @@
+Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELEECT * FROM beers WHERE id = NULL' at line 1

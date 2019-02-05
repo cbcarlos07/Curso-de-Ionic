@@ -16,7 +16,7 @@
 <ion-content padding>
 
     <ion-card *ngIf="beer">
-        <img src="https://www.skol.com.br/assets/images/produtos/pilsen-garrafa-300.png" width="5" height="125" >
+        <img src="{{ beer.img }}" width="5" height="125" >
         <ion-card-content >
            <ion-card-title>
               {{ beer.name }}
