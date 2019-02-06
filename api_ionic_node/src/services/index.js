@@ -17,8 +17,9 @@ const errorHandler = (error, msg, rejectFunction) => {
     rejectFunction({error: msg})
 }
 const beersModule = require('./beers')({connection, errorHandler})
-
+const usersMdule  = require('./users')({connection, errorHandler})
 
 module.exports = {
-    beers: () => beersModule
+    beers: () => beersModule,
+    users: () => usersMdule
 }

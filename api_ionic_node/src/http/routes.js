@@ -50,6 +50,14 @@ const routes = (server) => {
             res.send( error )
         }
         next()
+    })
+    server.post('/v1/auth/login', async (req, res, next) => {       
+        try {
+            res.send( await db.users().login( req.body ) )
+        } catch (error) {
+            res.send( error )
+        }
+        next()
     }) 
 }
 
