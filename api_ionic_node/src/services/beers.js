@@ -47,8 +47,36 @@ const beers = deps => {
                 })
             })
         },
-        /*update: (id, name) => {},
-        del   : ( id ) */
+        update: ( beer ) => {
+            return new Promise((resolve, reject) => {
+                const { connection, errorHandler } = deps
+                const query = 'UPDATE beers SET name = ?, price = ?, type = ?, mark = ?, img = ?  WHERE id = ?'
+                const data = [beer.name, beer.price, beer.type, beer.mark, beer.img, beer.id]
+                connection.query(query, data, (error, results) => {
+                    if( error || !results.affectedRows ){
+                        errorHandler(error, 'Falha ao atualizar registro', reject)
+                        return false
+                    }
+                    resolve( {msg: 'Registro atualizado com sucesso'} )
+                    
+                })
+            })
+        },
+        del   : ( id ) => {
+            return new Promise((resolve, reject) => {
+                const { connection, errorHandler } = deps
+                const query = 'DELETE FROM beers WHERE id = ?'
+                const data = [ id ]
+                connection.query(query, data, (error, results) => {
+                    if( error || !results.affectedRows ){
+                        errorHandler(error, 'Falha ao remover registro', reject)
+                        return false
+                    }
+                    resolve( {msg: 'Registro removido com sucesso'} )
+                    
+                })
+            })
+        }
     }
 }
 module.exports = beers

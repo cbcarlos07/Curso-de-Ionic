@@ -33,16 +33,24 @@ const routes = (server) => {
         }
         next()
     })
-    /*server.put('/v1/beers', (req, res, next) => {       
-        const { name } = req.body
-        res.send( name )
+    server.put('/v1/beers', async (req, res, next) => {       
+        
+        try{
+            res.send( await db.beers().update( req.body ) )
+        }catch(error){
+            res.send(error)
+        }
         next()
     })
-    server.delete('/v1/beers', (req, res, next) => {       
-        const { name } = req.body
-        res.send( name )
+    server.del('/v1/beers/:id', async (req, res, next) => {       
+        const { id } = req.params
+        try {
+            res.send( await db.beers().del( id ) )
+        } catch (error) {
+            res.send( error )
+        }
         next()
-    }) */
+    }) 
 }
 
 module.exports = routes
