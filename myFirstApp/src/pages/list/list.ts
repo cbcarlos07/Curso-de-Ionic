@@ -12,7 +12,8 @@ export class ListPage {
   icons: string[];
   //public url: string = 'http://localhost:81/api_ionic'
   //public url: string = 'http://localhost:3456/v1'
-  public url: string = 'http://192.168.137.1:3456/v1'
+  //public url: string = 'http://192.168.137.1:3456/v1'
+  public url: string = 'http://192.168.1.3:3456/v1' // linux de casa
   beer = { name:  "",
            price: "", 
            type:  "",

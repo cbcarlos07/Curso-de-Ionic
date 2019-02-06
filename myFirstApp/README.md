@@ -8,3 +8,11 @@
 
 ## Para criar nova pagina
     ionic g page nomeDaPagina
+
+## Adicionar plataforma
+    ionic cordova platform add android
+
+
+## Rodar o app
+    ionic cordova run android
+
