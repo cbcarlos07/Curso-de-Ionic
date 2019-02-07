@@ -10,17 +10,22 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
+import { AuthProvider } from '../providers/auth/auth';
+import { IonicStorageModule } from '@ionic/storage';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({name: '__mydb',driverOrder: ['sqlite', 'websql','indexeddb']}),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -28,13 +33,15 @@ import { Camera } from '@ionic-native/camera';
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    AuthProvider
   ]
 })
 export class AppModule {}
