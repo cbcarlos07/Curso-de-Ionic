@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http';
+
+import { Injectable, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage'
-import 'rxjs/add/operator/map'
-import { environment as ENV } from '../../environment/environment'
-import { ToastController } from 'ionic-angular';
+import { ToastController, NavController, Nav, App } from 'ionic-angular';
+import { HttpServiceProvider } from '../http-service/http-service';
+import { HomePage } from '../../pages/home/home';
 /*
   Generated class for the AuthProvider provider.
 
@@ -13,22 +12,38 @@ import { ToastController } from 'ionic-angular';
 */
 @Injectable()
 export class AuthProvider {
+  @ViewChild(Nav) nav: Nav
   private msg: string = 'É preciso logar para acessar'
-  constructor(public http: Http,
+  
+  constructor(public http: HttpServiceProvider,
               public storage: Storage,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              private app: App ){
     console.log('Hello AuthProvider Provider');
   }
 
   login( credentials ){
-      let url = ENV.BASE_URL + '/auth/login'      
-      let headers = new Headers()
-      headers.append('Content-Type','application/json')
-      let options = new RequestOptions({headers: headers})
-      this.http.post(url, credentials, options )
-               .map( res => res.json() )
+      
+      this.http.post('auth/login',credentials)
                .subscribe( (data) => {
-                    this.storage.set('token', data.token)
+                    if( data.error !== undefined ){
+                      let toast = this.toastCtrl.create({
+                        message: data.error,
+                        duration: 3000
+                      })
+                      toast.present()
+                    }else{
+                      this.storage.set('token', data.token)
+                      this.app.getActiveNav().setRoot( HomePage )
+                    }
+
+               }, error => {
+                  let toast = this.toastCtrl.create({
+                    message: error.error,
+                    duration: 3000
+                  })
+                  toast.present()
+                  
                }) 
   }
 

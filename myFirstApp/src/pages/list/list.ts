@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
-import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Camera, CameraOptions } from '@ionic-native/camera'
 import { environment as ENV } from '../../environment/environment'
 import { AuthProvider } from '../../providers/auth/auth';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -25,20 +25,14 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public http: Http,
+              public http: HttpServiceProvider,
               public toastCtrl: ToastController,
               public camera: Camera,
               public authService: AuthProvider) {
     this.url = ENV.BASE_URL
   }
   saveBeer(beer){
-  
- 
-     let headers = new Headers()
-         headers.append('Content-Type', 'application/json')
-     let options = new RequestOptions({headers: headers})    
-     this.http.post( this.url + '/beers', beer, options )
-              .map( res =>  res.json()  )
+     this.http.post( 'beers', beer )
               .subscribe( (data) => {        
                   let toast = this.toastCtrl.create({
                       message: data.msg,
