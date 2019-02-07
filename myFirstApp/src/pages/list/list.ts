@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Camera, CameraOptions } from '@ionic-native/camera'
 import { environment as ENV } from '../../environment/environment'
+import { AuthProvider } from '../../providers/auth/auth';
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -26,7 +27,8 @@ export class ListPage {
               public navParams: NavParams,
               public http: Http,
               public toastCtrl: ToastController,
-              public camera: Camera) {
+              public camera: Camera,
+              public authService: AuthProvider) {
     this.url = ENV.BASE_URL
   }
   saveBeer(beer){
@@ -53,6 +55,8 @@ export class ListPage {
     
   }
 
+
+
   getFoto(){
     const options: CameraOptions = {
         quality: 60, // qualidade aceita na api
@@ -72,5 +76,10 @@ export class ListPage {
         console.log(err);
         
        });
+  }
+
+  ionViewCanEnter(){
+    
+    return this.authService.userIsLogged()
   }
 }

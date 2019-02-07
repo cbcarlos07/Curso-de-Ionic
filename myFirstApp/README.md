@@ -16,3 +16,6 @@
 ## Rodar o app
     ionic cordova run android
 
+## Configurar nova imagem icone
+    ionic cordova resources  ou
+    ionic cordova resources --force
