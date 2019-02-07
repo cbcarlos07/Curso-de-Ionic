@@ -1,1 +1,1 @@
-null
+Error: ER_BAD_DB_ERROR: Unknown database 'beers123'

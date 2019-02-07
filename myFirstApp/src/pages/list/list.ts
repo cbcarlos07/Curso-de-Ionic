@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Camera, CameraOptions } from '@ionic-native/camera'
+import { environment as ENV } from '../../environment/environment'
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -12,8 +13,8 @@ export class ListPage {
   icons: string[];
   //public url: string = 'http://localhost:81/api_ionic'
   //public url: string = 'http://localhost:3456/v1'
-  //public url: string = 'http://192.168.137.1:3456/v1'
-  public url: string = 'http://192.168.1.3:3456/v1' // linux de casa
+  public url: string 
+  //public url: string = 'http://192.168.1.3:3456/v1' // linux de casa
   beer = { name:  "",
            price: "", 
            type:  "",
@@ -26,7 +27,7 @@ export class ListPage {
               public http: Http,
               public toastCtrl: ToastController,
               public camera: Camera) {
-    
+    this.url = ENV.BASE_URL
   }
   saveBeer(beer){
   

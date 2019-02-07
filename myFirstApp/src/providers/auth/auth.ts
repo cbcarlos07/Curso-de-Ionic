@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage'
 import 'rxjs/add/operator/map'
+import { environment as ENV } from '../../environment/environment'
 /*
   Generated class for the AuthProvider provider.
 
@@ -18,7 +19,7 @@ export class AuthProvider {
   }
 
   login( credentials ){
-      let url = 'http://localhost:3456/v1/auth/login'      
+      let url = ENV.BASE_URL + '/auth/login'      
       let headers = new Headers()
       headers.append('Content-Type','application/json')
       let options = new RequestOptions({headers: headers})
