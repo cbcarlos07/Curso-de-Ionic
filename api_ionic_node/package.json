@@ -4,12 +4,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava --verbose"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ava": "^1.2.1",
     "dotenv": "^6.2.0",
     "jsonwebtoken": "^8.4.0",
     "mysql": "^2.16.0",
@@ -17,6 +18,8 @@
     "restify-cors-middleware": "^1.1.1"
   },
   "dependencies": {
+    "restify-router": "^0.5.1",
+    "restify-url-semver": "^1.1.1",
     "sha1": "^1.1.1"
   },
   "description": ""

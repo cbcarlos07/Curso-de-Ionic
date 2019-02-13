@@ -1,6 +1,7 @@
 
 const db = require('../services')
 const routes = (server) => {
+    
     server.get('/v1', (req, res, next) => {
         res.send('Engoy the silence')
         next()

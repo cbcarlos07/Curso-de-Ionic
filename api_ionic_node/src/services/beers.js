@@ -9,6 +9,7 @@ const beers = deps => {
                         errorHandler(error, 'Falha ao listar as categorias', reject)
                         return false
                     }
+                    
                     resolve( { results } )
                     
                 })
