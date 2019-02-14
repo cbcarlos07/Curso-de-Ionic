@@ -58,7 +58,7 @@ const beers = deps => {
                         errorHandler(error, 'Falha ao atualizar registro', reject)
                         return false
                     }
-                    resolve( {msg: 'Registro atualizado com sucesso'} )
+                    resolve( {results, msg: 'Registro atualizado com sucesso'} )
                     
                 })
             })
@@ -73,7 +73,7 @@ const beers = deps => {
                         errorHandler(error, 'Falha ao remover registro', reject)
                         return false
                     }
-                    resolve( {msg: 'Registro removido com sucesso'} )
+                    resolve( {results, msg: 'Registro removido com sucesso'} )
                     
                 })
             })
